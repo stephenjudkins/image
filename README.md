@@ -16,11 +16,11 @@ All image processing functions provided operate on types that implement the `Gen
 
 ## High level API
 
-Load images using [`ImageReader`]:
+Load images using [`io::Reader`]:
 
 ```rust,ignore
 use std::io::Cursor;
-use image::ImageReader;
+use image::io::Reader as ImageReader;
 
 let img = ImageReader::open("myimage.png")?.decode()?;
 let img2 = ImageReader::new(Cursor::new(bytes)).with_guessed_format()?.decode()?;

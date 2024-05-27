@@ -13,11 +13,11 @@
 //!
 //! # High level API
 //!
-//! Load images using [`ImageReader`]:
+//! Load images using [`io::Reader`]:
 //!
 //! ```rust,no_run
 //! use std::io::Cursor;
-//! use image::ImageReader;
+//! use image::io::Reader as ImageReader;
 //! # fn main() -> Result<(), image::ImageError> {
 //! # let bytes = vec![0u8];
 //!
@@ -49,7 +49,7 @@
 //!
 //! [`save`]: enum.DynamicImage.html#method.save
 //! [`write_to`]: enum.DynamicImage.html#method.write_to
-//! [`ImageReader`]: struct.Reader.html
+//! [`io::Reader`]: io/struct.Reader.html
 //!
 //! # Image buffers
 //!
@@ -167,7 +167,6 @@ pub use crate::dynimage::{
     save_buffer_with_format, write_buffer_with_format,
 };
 pub use crate::io::free_functions::{guess_format, load};
-pub use crate::io::{ImageReader, LimitSupport, Limits};
 
 pub use crate::dynimage::DynamicImage;
 
@@ -193,6 +192,9 @@ pub mod math;
 
 // Image processing functions
 pub mod imageops;
+
+// Io bindings
+pub mod io;
 
 // Buffer representations for ffi.
 pub mod flat;
@@ -288,7 +290,6 @@ mod buffer_par;
 mod color;
 mod dynimage;
 mod image;
-mod io;
 mod traits;
 mod utils;
 
